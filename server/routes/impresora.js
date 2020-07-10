@@ -24,7 +24,7 @@ app.get('/impresora/:id', (req, res) => {
             } else {
                 res.json({
                     ok: true,
-                    message: "Impresora Eliminada"
+                    impresora
                 })
             }
 
@@ -103,7 +103,7 @@ app.delete('/impresora/:id', (req, res) => {
         } else {
             res.json({
                 ok: true,
-                impresora: impresoraDB
+                message: "Impresora eliminada"
             })
         }
     })
