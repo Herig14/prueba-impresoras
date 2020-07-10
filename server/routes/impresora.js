@@ -4,6 +4,34 @@ const Impresora = require('../models/impresora');
 const _ = require('underscore')
     //const usuario = require('../models/usuario');
 
+app.get('/impresora', (req, res) => {
+    let id = req.params.id;
+    Impresora.find() //filtro de busqueda
+        .exec((err, impresora) => {
+            if (err) {
+                return res.status(400).json({
+                    ok: false,
+                    err
+                });
+            }
+            if (impresora.length === 0) {
+                res.json({
+                    ok: false,
+                    err: {
+                        message: "No hay impresoras"
+                    }
+                })
+            } else {
+                res.json({
+                    ok: true,
+                    impresora
+                })
+            }
+
+
+        })
+});
+
 app.get('/impresora/:id', (req, res) => {
     let id = req.params.id;
     Impresora.find({ _id: id }) //filtro de busqueda
