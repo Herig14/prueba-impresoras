@@ -33,10 +33,10 @@ let impresoraSchema = new schema({
     }
 })
 impresoraSchema.plugin(uniqueValidator, { message: `{PATH} debe ser único` })
-impresoraSchema.methods.toJSON = function() {
-    let impresora = this
-    let impresoraobject = impresora.toObject()
-    delete impresoraobject.contador
-    return impresoraobject
-}
+    /* impresoraSchema.methods.toJSON = function() {
+        let impresora = this
+        let impresoraobject = impresora.toObject()
+        delete impresoraobject.contador
+        return impresoraobject
+    } */
 module.exports = mongoose.model('impresora', impresoraSchema)

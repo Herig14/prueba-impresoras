@@ -8,6 +8,7 @@ app.get('/impresora', (req, res) => {
     let id = req.params.id;
     Impresora.find() //filtro de busqueda
         .exec((err, impresora) => {
+            delete impresora.contador
             if (err) {
                 return res.status(400).json({
                     ok: false,
@@ -36,6 +37,7 @@ app.get('/impresora/:id', (req, res) => {
     let id = req.params.id;
     Impresora.find({ _id: id }) //filtro de busqueda
         .exec((err, impresora) => {
+            delete impresora.contador
             if (err) {
                 return res.status(400).json({
                     ok: false,
